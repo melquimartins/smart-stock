@@ -2,18 +2,17 @@ package io.github.melquimartins.smartstock.security;
 
 import io.github.melquimartins.smartstock.domain.user.UserRepository;
 import jakarta.annotation.Nonnull;
-import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomUserDetailsService implements UserDetailsService {
+public class JpaUserDetailsService implements UserDetailsService {
 
     private final UserRepository repository;
 
-    public CustomUserDetailsService(UserRepository repository) {
+    public JpaUserDetailsService(UserRepository repository) {
         this.repository = repository;
     }
 

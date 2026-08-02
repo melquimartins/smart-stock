@@ -38,7 +38,7 @@ public class AuthService {
         repository
                 .findByEmail(request.email())
                 .orElseThrow(() -> new UnauthorizedException(
-                        "E-mail ou senha incorretos. Verifique suas credenciais e tente novamente"));
+                        "As credenciais informadas são inválidas. Tente novamente."));
 
         var authenticationToken = new UsernamePasswordAuthenticationToken(
                 request.email(),
@@ -53,7 +53,7 @@ public class AuthService {
     public String signUp(SignUpRequest request) {
         if (repository.findByEmail(request.email()).isPresent()) {
             throw new ConflictException(
-                    "Este e-mail já está vinculado a uma conta. Tente fazer login ou use outro e-mail."
+                    "Este e-mail já está vinculado a uma conta. Tente novamente."
             );
         }
 

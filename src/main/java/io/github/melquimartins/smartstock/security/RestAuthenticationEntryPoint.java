@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import java.io.IOException;
 
 @Component
-public class UnauthorizedEntryPoint implements AuthenticationEntryPoint {
+public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
 
     @Override
     public void commence(
@@ -22,7 +22,8 @@ public class UnauthorizedEntryPoint implements AuthenticationEntryPoint {
             AuthenticationException e
     ) throws IOException {
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-        response.setContentType("application/json");
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
 
         String message = e.getMessage();
 

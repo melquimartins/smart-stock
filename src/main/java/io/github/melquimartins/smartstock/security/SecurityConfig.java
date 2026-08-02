@@ -17,9 +17,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final SecurityFilter filter;
-    private final UnauthorizedEntryPoint unauthorizedEntryPoint;
+    private final RestAuthenticationEntryPoint unauthorizedEntryPoint;
 
-    public SecurityConfig(SecurityFilter filter, UnauthorizedEntryPoint unauthorizedEntryPoint) {
+    public SecurityConfig(SecurityFilter filter, RestAuthenticationEntryPoint unauthorizedEntryPoint) {
         this.filter = filter;
         this.unauthorizedEntryPoint = unauthorizedEntryPoint;
     }
