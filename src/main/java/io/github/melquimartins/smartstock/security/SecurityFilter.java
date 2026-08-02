@@ -41,7 +41,7 @@ public class SecurityFilter extends OncePerRequestFilter {
             String token = recoverToken(request);
 
             if (token != null) {
-                String email = jwtService.validateToken(recoverToken(request));
+                String email = jwtService.validateToken(token);
 
                 User user = userRepository.findByEmail(email).orElseThrow(UnauthorizedException::new);
 
@@ -68,7 +68,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         }
 
         for (Cookie cookie : cookies) {
-            if ("accessToken".equals(cookie.getName()) && !cookie.getValue().isBlank()) {
+            if ("access-token".equals(cookie.getName()) && !cookie.getValue().isBlank()) {
                 return cookie.getValue();
             }
         }

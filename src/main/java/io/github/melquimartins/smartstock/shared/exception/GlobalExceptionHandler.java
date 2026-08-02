@@ -55,7 +55,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<String> handleBadCredentialsException(BadCredentialsException e) {
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
-                "Este e-mail já está vinculado a uma conta. Tente fazer login ou use outro e-mail.");
+                "E-mail ou senha incorretos. Verifique suas credenciais e tente novamente."
+        );
     }
 
 }

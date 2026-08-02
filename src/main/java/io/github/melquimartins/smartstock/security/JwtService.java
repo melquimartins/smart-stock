@@ -14,7 +14,7 @@ public class JwtService {
 
     private final Algorithm algorithm;
 
-    public JwtService(@Value("teste123") String secret) {
+    public JwtService(@Value("${api.security.token.secret}") String secret) {
         if (secret == null || secret.isBlank()) {
             throw new IllegalStateException("JWT_SECRET não configurado.");
         }

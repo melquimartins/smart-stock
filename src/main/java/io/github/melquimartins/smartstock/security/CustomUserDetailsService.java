@@ -1,7 +1,6 @@
 package io.github.melquimartins.smartstock.security;
 
 import io.github.melquimartins.smartstock.domain.user.UserRepository;
-import io.github.melquimartins.smartstock.shared.exception.UnauthorizedException;
 import jakarta.annotation.Nonnull;
 import org.jspecify.annotations.NullMarked;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public @Nonnull UserDetails loadUserByUsername(@Nonnull String username) throws UsernameNotFoundException {
         return repository
                 .findByEmail(username)
-                .orElseThrow(UnauthorizedException::new);
+                .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado."));
     }
 
 }
